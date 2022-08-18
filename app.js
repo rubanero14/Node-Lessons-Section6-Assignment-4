@@ -1,15 +1,24 @@
 const express = require('express');
-const path = require('path');
 const bodyParser = require('body-parser');
 const PORT = 8000;
 const app = express();
+
+const expressHbs = require('express-handlebars');
+app.engine('hbs', expressHbs({
+    defaultLayout: 'main-layout',
+    extname: '.hbs',
+}));
 
 // Route files import section 
 const homeRoute = require('./routes/home');
 const userRoute = require('./routes/users');
 
 // Setting template engine section
-app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs');
+// app.set('view engine', 'pug');
+app.set('view engine', 'hbs');
+
+// Initiating templates to render
 app.set('views', 'views');
 
 // Initiate body-parser middleware

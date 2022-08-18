@@ -9,8 +9,4 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.post('/', (req, res, next) => {
-    res.redirect('/users');
-});
-
 module.exports = router;

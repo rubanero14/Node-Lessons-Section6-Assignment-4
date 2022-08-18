@@ -8,20 +8,17 @@ router.get('/users', (req, res, next) => {
     res.render('users',{
         pageTitle: 'Users',
         path: '/users',
-        hasUsers: names.length > 0,
         names: names,
+        hasNames: names.length > 0,
     });
 });
 
 router.post('/users', (req, res, next) => {
-    names.push(req.body.name);
-    console.log(names);
-    res.render('users',{
-        names: names,
-        pageTitle: 'Users',
-        path: '/users',
-        hasUsers: names.length > 0,
+    names.push({
+        name: req.body.name,
     });
+    console.log(names);
+    res.redirect('/users');
 });
 
 module.exports = router;
