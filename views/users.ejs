@@ -1,0 +1,12 @@
+<%- include('includes/head.ejs') %>
+    <% if(names.length < 1){ %>
+        <h1>No users found!</h1>
+    <% } else { %>
+        <h1>List of Users</h1>
+        <ul>
+        <% for(let name of names){ %>
+            <li><%= name %></li>
+        <% } %>
+        </ul>
+    <% } %>
+<%- include('includes/end.ejs') %>

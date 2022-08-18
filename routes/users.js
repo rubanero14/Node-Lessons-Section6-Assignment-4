@@ -2,24 +2,26 @@ const express = require('express');
 
 const router = express.Router();
 
-const names = require('./home');
+const names = [];
 
 router.get('/users', (req, res, next) => {
-    res.send(`
-        <h1>List of Users</h1>
-        <ul>
-            <li>Hi</li>
-        </ul>
-    `);
+    res.render('users',{
+        pageTitle: 'Users',
+        path: '/users',
+        hasUsers: names.length > 0,
+        names: names,
+    });
 });
 
 router.post('/users', (req, res, next) => {
-    res.send(`
-        <h1>List of Users</h1>
-        <ul>
-            <li>${req.body.name}</li>
-        </ul>
-    `);
+    names.push(req.body.name);
+    console.log(names);
+    res.render('users',{
+        names: names,
+        pageTitle: 'Users',
+        path: '/users',
+        hasUsers: names.length > 0,
+    });
 });
 
 module.exports = router;
