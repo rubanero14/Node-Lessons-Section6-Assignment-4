@@ -14,9 +14,9 @@ const homeRoute = require('./routes/home');
 const userRoute = require('./routes/users');
 
 // Setting template engine section
-// app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
 // app.set('view engine', 'pug');
-app.set('view engine', 'hbs');
+// app.set('view engine', 'hbs');
 
 // Initiating templates to render
 app.set('views', 'views');
